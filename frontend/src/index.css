@@ -1,0 +1,75 @@
+@font-face {
+  font-family: "Gilmer";
+  src: url("assets/fonts/GilmerBold.woff") format("woff"),
+    url("assets/fonts/GilmerBold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilmer Outline";
+  src: url("assets/fonts/GilmerOutline.woff") format("woff"),
+    url("assets/fonts/GilmerOutline.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  background-color: #f7f1e9;
+}
+
+@font-face {
+  font-family: "Gilmer";
+  src: url("assets/fonts/GilmerRegular.woff") format("woff"),
+    url("assets/fonts/GilmerRegular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilmer";
+  src: url("assets/fonts/GilmerLight.woff") format("woff"),
+    url("assets/fonts/GilmerLight.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilmer";
+  src: url("assets/fonts/GilmerHeavy.woff") format("woff"),
+    url("assets/fonts/GilmerHeavy.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilmer";
+  src: url("assets/fonts/GilmerMedium.woff") format("woff"),
+    url("assets/fonts/GilmerMedium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @variants hover, focus {
+    .text-primary {
+      color: #a2ab99;
+    }
+    .bg-primary {
+      background-color: #a2ab99;
+    }
+    .bg-primary-light {
+      background-color: #f7f1e9;
+    }
+  }
+}
