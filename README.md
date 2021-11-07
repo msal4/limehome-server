@@ -38,7 +38,7 @@ And the frontend is hosted on netlify at [https://amazing-snyder-7b63d7.netlify.
 ## Endpoints
 
 - GET /api/reservations  
-  query params: {take?: integer >= 0, skip?: integer >=0}
+  query params: {take?: integer >= 0, skip?: integer >= 0}
 
 - POST /api/reservations  
   body (content-type: application/json):
@@ -46,7 +46,7 @@ And the frontend is hosted on netlify at [https://amazing-snyder-7b63d7.netlify.
   - lastName: string **(required)**
   - checkInDate: string **(required)**
   - checkOutDate: string **(required)**
-  - numOfGuests: number **(required)**
+  - numOfGuests: integer **(required)**
   - billingAddress: string **(required)**
   - billingCountry: string **(required)**
   - postalCode: string **(required)**
