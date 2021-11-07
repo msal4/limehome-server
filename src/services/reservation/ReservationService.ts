@@ -26,7 +26,6 @@ export class ReservationService {
     const validationRes = this.listReservationsInputSchema.validate(input);
     if (validationRes.error) {
       throw validationRes.error;
-      return;
     }
 
     return await this.prisma.reservation.findMany({
