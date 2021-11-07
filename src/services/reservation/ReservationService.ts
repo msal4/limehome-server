@@ -1,10 +1,11 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Reservation } from "@prisma/client";
 import Joi from "joi";
 import {
   paginationTakeDefault,
   paginationTakeMax,
   phoneRegexp,
 } from "../../config";
+import { PaginatedResponse } from "../../types";
 import { CreateReservationInput } from "./CreateReservationInput";
 import { ListReservationsInput } from "./ListReservationInput";
 
@@ -22,16 +23,25 @@ export class ReservationService {
     });
   }
 
-  async list(input?: ListReservationsInput) {
+  async list(
+    input?: ListReservationsInput
+  ): Promise<PaginatedResponse<Reservation>> {
     const validationRes = this.listReservationsInputSchema.validate(input);
     if (validationRes.error) {
       throw validationRes.error;
     }
 
-    return await this.prisma.reservation.findMany({
+    const total = await this.prisma.reservation.count();
+
+    const items = await this.prisma.reservation.findMany({
       skip: Number(validationRes.value?.skip),
       take: Number(validationRes.value?.take),
     });
+
+    const hasNext =
+      validationRes.value?.skip + validationRes.value?.take < total;
+
+    return { items, total, hasNext };
   }
 
   private createReservationSchema = Joi.object<CreateReservationInput>({
