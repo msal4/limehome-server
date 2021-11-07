@@ -109,9 +109,7 @@ describe("ReservationService/list", () => {
     prismaMock.reservation.findMany.mockResolvedValue([reservation]);
     await expect(service.list()).resolves.toEqual([reservation]);
 
-    await expect(service.list({ take: 10, skip: 10 })).resolves.toEqual([
-      reservation,
-    ]);
+    await expect(service.list({ take: 10, skip: 10 })).resolves.toEqual([reservation]);
   });
 
   it("should fail if user provides invalid pagination input", async () => {
