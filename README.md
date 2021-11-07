@@ -16,13 +16,7 @@ cp .env.example .env
 
 set the required `DATABASE_URL`
 
-then generate the prisma client
-
-```bash
-npx prisma generate
-```
-
-and apply the migrations
+to apply the migrations (and generate the prisma client)
 
 ```bash
 npx prisma migrate dev
