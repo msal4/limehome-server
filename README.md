@@ -16,7 +16,19 @@ cp .env.example .env
 
 set the required `DATABASE_URL`
 
-and run the server
+then generate the prisma client
+
+```bash
+npx prisma generate
+```
+
+and apply the migrations
+
+```bash
+npx prisma migrate dev
+```
+
+now you can run the server
 
 ```bash
 yarn start
