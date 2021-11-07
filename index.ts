@@ -4,6 +4,7 @@ import { json as jsonBodyParser } from "body-parser";
 import cors from "cors";
 import { ReservationService } from "./src/services/reservation";
 import { ReservationController } from "./src/controllers";
+import { serverPort } from "./src/config";
 
 function bootstrap() {
   const app = Express();
@@ -23,7 +24,7 @@ function bootstrap() {
   api.post("/reservations", controller.create);
   app.use("/api", api);
 
-  app.listen(4000, () => console.log("Listening at :4000"));
+  app.listen(serverPort, () => console.log("Listening at :4000"));
 }
 
 bootstrap();
