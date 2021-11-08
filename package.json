@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "tsc && node --unhandled-rejections=strict ./dist/index.js",
-    "test": "jest -i"
+    "test": "rm -rf dist && jest -i"
   },
   "dependencies": {
     "@prisma/client": "3.4.1",

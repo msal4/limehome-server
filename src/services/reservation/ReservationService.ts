@@ -59,7 +59,7 @@ export class ReservationService {
   });
 
   private listReservationsInputSchema = Joi.object<ListReservationsInput>({
-    take: Joi.number().integer().positive().default(paginationTakeDefault).max(paginationTakeMax),
-    skip: Joi.number().integer().positive().default(0),
+    take: Joi.number().integer().min(0).default(paginationTakeDefault).max(paginationTakeMax),
+    skip: Joi.number().integer().min(0).default(0),
   });
 }

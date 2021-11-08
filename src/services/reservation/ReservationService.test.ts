@@ -95,7 +95,7 @@ describe("ReservationService/create", () => {
 describe("ReservationService/list", () => {
   it("should return a list of reservations", async () => {
     prismaMock.reservation.findMany.mockResolvedValue([]);
-    await expect(service.list()).resolves.toEqual([]);
+    await expect(service.list()).resolves.toMatchObject({ items: [] });
 
     const reservation = {
       ...testInput,
@@ -107,12 +107,13 @@ describe("ReservationService/list", () => {
     };
 
     prismaMock.reservation.findMany.mockResolvedValue([reservation]);
-    await expect(service.list()).resolves.toEqual([reservation]);
+    await expect(service.list()).resolves.toMatchObject({ items: [reservation] });
 
-    await expect(service.list({ take: 10, skip: 10 })).resolves.toEqual([reservation]);
+    await expect(service.list({ take: 10, skip: 0 })).resolves.toMatchObject({ items: [reservation] });
   });
 
   it("should fail if user provides invalid pagination input", async () => {
+    service.list({ skip: -1 }).catch((r) => console.log(JSON.stringify(r, null, 2)));
     await expect(service.list({ skip: -1 })).rejects.toMatchObject({
       details: [{ path: ["skip"] }],
     });
