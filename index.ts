@@ -24,7 +24,7 @@ function bootstrap() {
   api.post("/reservations", controller.create);
   app.use("/api", api);
 
-  app.listen(serverPort, () => console.log("Listening at :4000"));
+  app.listen(serverPort, () => console.log(`Listening at :${serverPort}`));
 }
 
 bootstrap();
